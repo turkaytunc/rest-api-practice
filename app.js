@@ -1,6 +1,13 @@
 const express = require("express");
 const app = express();
 
-app.listen("8080", "127.0.0.1", () => {
-  console.log("started");
+const feedRoutes = require("./routes/feed");
+
+const serverIp = "127.0.0.1";
+const portNumber = "8080";
+
+app.use("/feed", feedRoutes);
+
+app.listen(portNumber, serverIp, () => {
+  console.log(`Server listen ${serverIp}:${portNumber}`);
 });
