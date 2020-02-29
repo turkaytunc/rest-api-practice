@@ -4,10 +4,12 @@ const data = {
   content: "some random content i made from my a**"
 };
 
+//  Sends all posts to client
 exports.getPosts = (req, res, next) => {
   res.status(200).json(data);
 };
 
+// Creates post with client input
 exports.createPost = (req, res, next) => {
   data.title = req.body.title;
   data.content = req.body.content;

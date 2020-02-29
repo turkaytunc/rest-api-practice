@@ -10,6 +10,8 @@ const portNumber = "8080";
 // cors fix
 app.use(cors());
 
+app.use(bodyParser.json());
+
 //cors fix alternative approach
 
 // app.use((req, res, next) => {
@@ -19,10 +21,10 @@ app.use(cors());
 //   next();
 // });
 
-app.use(bodyParser.json());
-
+//feed routes
 app.use("/feed", feedRoutes);
 
+//creating server
 app.listen(portNumber, serverIp, () => {
   console.log(`Server listen ${serverIp}:${portNumber}`);
 });
