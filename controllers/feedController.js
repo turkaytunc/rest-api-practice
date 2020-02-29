@@ -1,4 +1,8 @@
-const data = { id: 0, title: "", content: "" };
+const data = {
+  id: 553,
+  title: "title",
+  content: "some random content i made from my a**"
+};
 
 exports.getPosts = (req, res, next) => {
   res.status(200).json(data);
