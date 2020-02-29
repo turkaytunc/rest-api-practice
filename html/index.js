@@ -11,6 +11,7 @@ getButton.addEventListener("click", () => {
       console.log(resData);
       const { id, title, content } = resData;
 
+      indexContent.innerHTML = "";
       indexContent.insertAdjacentHTML(
         "afterbegin",
         `<h1>${id}</h1><h1>${title}</h1><hr><p>${content}</p>`
