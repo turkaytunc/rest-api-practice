@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const feedRoutes = require("./routes/feed");
 const cors = require("cors");
+const mongoose = require("mongoose");
 
 const app = express();
 const serverIp = "127.0.0.1";
@@ -24,7 +25,17 @@ app.use(bodyParser.json());
 //feed routes
 app.use("/feed", feedRoutes);
 
-//creating server
-app.listen(portNumber, serverIp, () => {
-  console.log(`Server listen ${serverIp}:${portNumber}`);
-});
+mongoose
+  .connect(
+    "mongodb+srv://trk:HhEIHBSxFAbwZzmB@cluster0-ledam.mongodb.net/blog?retryWrites=true&w=majority",
+    { useUnifiedTopology: true, useNewUrlParser: true }
+  )
+  .then(
+    //creating server
+    app.listen(portNumber, serverIp, () => {
+      console.log(`Server listen ${serverIp}:${portNumber}`);
+    })
+  )
+  .catch(err => {
+    console.log(err);
+  });
