@@ -1,22 +1,35 @@
-const data = {
-  id: 553,
-  title: "title",
-  content: "some random content i made from my a**"
-};
-
 //  Sends all posts to client
 exports.getPosts = (req, res, next) => {
-  res.status(200).json(data);
+  res.status(200).json({
+    posts: [
+      {
+        _id: "1",
+        title: "Post Title",
+        content: "lorem ipsum content",
+        imageUrl: "images/duck.jpg",
+        creator: {
+          name: "Turkay"
+        },
+        createdAt: new Date()
+      }
+    ]
+  });
 };
 
 // Creates post with client input
 exports.createPost = (req, res, next) => {
-  data.title = req.body.title;
-  data.content = req.body.content;
-  data.id = new Date().getTime();
+  let title = req.body.title;
+  let content = req.body.content;
+  let id = new Date().getTime();
 
   res.status(201).json({
     message: "post created",
-    post: { id: data.id, title: data.title, content: data.content }
+    post: {
+      id: id,
+      title: title,
+      content: content,
+      creator: { name: "Turkay Tunc" },
+      createdAt: new Date()
+    }
   });
 };
