@@ -30,12 +30,13 @@ mongoose
     "mongodb+srv://trk:HhEIHBSxFAbwZzmB@cluster0-ledam.mongodb.net/blog?retryWrites=true&w=majority",
     { useUnifiedTopology: true, useNewUrlParser: true }
   )
-  .then(
+  .then(result => {
     //creating server
-    app.listen(portNumber, serverIp, () => {
-      console.log(`Server listen ${serverIp}:${portNumber}`);
-    })
-  )
+    app.listen(portNumber, serverIp);
+  })
+  .then(result => {
+    console.log(`Server listen ${serverIp}:${portNumber}`);
+  })
   .catch(err => {
     console.log(err);
   });
