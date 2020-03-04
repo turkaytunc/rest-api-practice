@@ -26,12 +26,20 @@ exports.createPost = (req, res, next) => {
     error.statusCode = 422;
     throw error;
   }
+
+  if (!req.file) {
+    const error = new Error("Image not found!!");
+    error.statusCode = 422;
+    throw error;
+  }
+
+  const imageUrl = req.file.path;
   const title = req.body.title;
   const content = req.body.content;
   const post = new Post({
     title: title,
     content: content,
-    imageUrl: "images/dayi.png",
+    imageUrl: imageUrl,
     creator: { name: "Turkay Tunc" }
   });
 
