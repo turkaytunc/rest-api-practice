@@ -22,7 +22,6 @@ router.put(
       .normalizeEmail(),
     body("password")
       .trim()
-      .isEmpty()
       .isLength({ min: 5 }),
     body("name")
       .trim()
